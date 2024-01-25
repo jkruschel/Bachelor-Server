@@ -20,12 +20,14 @@ database.once('connected', () => {
 
 app.use(logger('dev'))
 
-app.use(express.json()) //http://expressjs.com/en/api.html#express.json
-app.use(express.urlencoded({ extended: false })) //http://expressjs.com/en/5x/api.html#express.urlencoded
+app.use(express.json())
+app.use(express.urlencoded({ extended: false }))
 
 const taskRouter = require('./routes/tasks')
+const pointsRouter = require('./routes/points')
 
 app.use('/tasks', taskRouter)
+app.use('/points', pointsRouter)
 
 app.listen(PORT, () => {
   console.info(`App listening on port ${PORT}`)
